@@ -26,7 +26,7 @@ public class MyServlet extends HttpServlet{
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        customerQuery = context.getBean("customerQuery", CustomerDAO.class);
+        customerQuery = context.getBean("customerDAO", CustomerDAO.class);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class MyServlet extends HttpServlet{
         request.setAttribute("aboutPurchasesCustomers", aboutPurchasesCustomers);
 
         try {
-            request.getRequestDispatcher("jsp/customerFavoriteShop.jsp").forward(request, response);
+            request.getRequestDispatcher("jsp/showCustomerFavoriteShop.jsp").forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         }
