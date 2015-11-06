@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -73,13 +75,31 @@ public class EditController {
         return "redirect:/edit/show";
     }
 
-    @RequestMapping(value = "/addTransaction/{main_id, a}", method = RequestMethod.POST)
-    public String addTransaction(@PathVariable("main_id, a") int main_id, int a, Model model){
+    @RequestMapping(value = "/addTransaction/", method = RequestMethod.PUT)
+    public String addTransaction(Model model, HttpServletRequest request){
+        String paramNameCustomersInput = request.getParameter("nameCustomersInput");
+        Map<ProductName, ProductInfo> productSets = new HashMap<>();
+        productSets.put(ProductName.MILK, new ProductInfo(1, 2.0));
+        TransactionByCustomer transaction = new TransactionByCustomer(
+                new Customer(paramNameCustomersInput),
+                new Shop("Shop_"),
+                productSets);
+        try {
+            customerDAO.addTransaction(transaction);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         /*String paramNameCustomersInput = request.getParameter("nameCustomersInput");
         String paramNameShopsInput = request.getParameter("nameShopsInput");
         String paramProductsNameInput = request.getParameter("productsNameInput");
         String paramCount = request.getParameter("count");
-        String paramPrice = request.getParameter("price");
+        String paramPrice = request.getParameter("price");*/
+        /*Map map = model.asMap();
+        String paramNameCustomersInput = map.get("nameCustomersInput").toString();
+        String paramNameShopsInput = map.get("nameShopsInput").toString();
+        String paramProductsNameInput = map.get("productsNameInput").toString();
+        String paramCount = map.get("count").toString();
+        String paramPrice = map.get("price").toString();
         if (paramNameCustomersInput != null &&
                 !paramNameCustomersInput.equals("") &&
                 !paramNameShopsInput.equals("") &&
@@ -97,11 +117,13 @@ public class EditController {
                     new Shop(paramNameShopsInput),
                     productSets);
             try {
-                customerQuery.addTransaction(transaction);
+                customerDAO.addTransaction(transaction);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }*/
+        }
+        else
+            System.exit(1);*/
         return "redirect:/edit/show";
     }
 }

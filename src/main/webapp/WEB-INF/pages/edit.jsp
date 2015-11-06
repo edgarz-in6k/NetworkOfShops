@@ -34,7 +34,7 @@
 
   <p>Add transaction</p>
 
-  <form action="edit/addTransaction/" method="post">
+  <form method="post" action="${pageContext.request.contextPath}/edit/addTransaction/"><%--method="post" action="edit/addTransaction/"--%>
     <table>
       <th>Customer</th> <th>Shop</th> <th>Product</th> <th>Count</th> <th>Price $</th> <th></th>
       <tr>
@@ -43,9 +43,6 @@
         <td><input type="text" name="productsNameInput" list="productsName"/></td>
         <td><input type="text" name="count"></td>
         <td><input type="text" name="price"></td>
-        <td>
-          <button type="submit" value="add" onclick="add()">ADD</button>
-        </td>
       </tr>
       <%for (int i = 0; i < 0; i++) {%>
         <tr>
@@ -54,17 +51,30 @@
           <td><input type="text" name=("productsNameInput"+i) list="productsName"/></td>
           <td><input type="text" name=("count"+i)></td>
           <td><input type="text" name=("price"+i)></td>
-          <td></td>
         </tr>
       <%}%>
     </table>
+
+    <%--<input type="hidden" name="_method" value="PUT">--%>
+    <input type="submit" value="ADD">
+
   </form>
 
   <tr></tr>
 
-  <form action="MyServlet" method="post">
+
+  <%--<form action="MyServlet" method="post">
     <button type="submit" value="value" name="add">ADD</button>
-  </form>
+  </form>--%>
+  <%--<form method="post" action="bestmanager">
+      <label for="start">Start date(yyyy-mm-dd)</label>
+      <input type="date" name="startDate" id="start">
+
+      <label for="end">End date(yyyy-mm-dd)</label>
+      <input type="date" name="endDate" id="end">
+
+      <input type="submit" name="show" value="Show">
+    </form>--%>
 
 
 
