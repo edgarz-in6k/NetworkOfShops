@@ -2,6 +2,7 @@ package com.controllers;
 
 import com.core.*;
 import com.db.CustomerDAO;
+import com.output.AboutTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,14 +34,14 @@ public class EditController {
         return "edit";
     }
 
-    private void namesShops(Model model) {
-        List list = null;
+    private void showAddTransaction(Model model) {
+        List<AboutTransaction> aboutTransactions = null;
         try {
-            list = customerDAO.getShops();
+            aboutTransactions = AboutTransaction.toArrayList(customerDAO.getAllTransaction());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        model.addAttribute("nameShops", list);
+        model.addAttribute("aboutTransactions", aboutTransactions);
     }
 
     private void namesCustomers(Model model) {
@@ -53,23 +54,27 @@ public class EditController {
         model.addAttribute("nameCustomers", list);
     }
 
-    private void showAddTransaction(Model model) {
+    private void namesShops(Model model) {
         List list = null;
         try {
-            list = customerDAO.getAllTransaction();
+            list = customerDAO.getShops();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        model.addAttribute("list", list);
+        model.addAttribute("nameShops", list);
     }
 
-    @RequestMapping(value = "/deleteProduct/{prod_id}", method = RequestMethod.DELETE)
-    public String deleteProduct(@PathVariable("prod_id") int prod_id){
-
+    @RequestMapping(value = "/{prod_id}", method = RequestMethod.DELETE)
+    public String deleteProduct(@PathVariable int prod_id){
+        try {
+            customerDAO.deleteOperation(prod_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return "redirect:/edit/show";
     }
 
-    @RequestMapping(value = "/deleteTransactionProduct/{main_id}", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/deleteTransactionProduct/{main_id}", method = RequestMethod.POST)
     public String deleteTransactionProduct(@PathVariable("main_id") int main_id){
 
         return "redirect:/edit/show";
@@ -89,7 +94,12 @@ public class EditController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        /*String paramNameCustomersInput = request.getParameter("nameCustomersInput");
+        //
+        return "redirect:/edit/show";
+    }*/
+}
+
+/*String paramNameCustomersInput = request.getParameter("nameCustomersInput");
         String paramNameShopsInput = request.getParameter("nameShopsInput");
         String paramProductsNameInput = request.getParameter("productsNameInput");
         String paramCount = request.getParameter("count");
@@ -124,6 +134,3 @@ public class EditController {
         }
         else
             System.exit(1);*/
-        return "redirect:/edit/show";
-    }
-}

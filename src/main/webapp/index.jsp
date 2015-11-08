@@ -5,7 +5,7 @@
 </head>
 <body>
 	<h3>${welcome}</h3>
-	<p><a href="favorite/customerFavoriteShop">Customers favorites of Shops</a></p>
+	<p><a href="customerFavoriteShop">Customers favorites of Shops</a></p>
 	<p><a href="edit/show">Edit database</a></p>
 </body>
 </html>

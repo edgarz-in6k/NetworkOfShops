@@ -13,9 +13,10 @@
       <th>Customers</th> <th>Shops</th> <th>Count visits</th> <th>Sum $</th>
       <%for (AboutPurchasesCustomer about : (List<AboutPurchasesCustomer>)request.getAttribute("aboutPurchasesCustomers")) {%>
         <tr>
-          <%for (String component : about) {%>
-                <td><%=component%></td>
-            <%}%>
+          <td><%=about.getNameCustomer()%></td>
+          <td><%=about.getNameShop()%></td>
+          <td><%=about.getVisit()%></td>
+          <td><%=about.getSum()%></td>
         </tr>
       <%}%>
     </table>

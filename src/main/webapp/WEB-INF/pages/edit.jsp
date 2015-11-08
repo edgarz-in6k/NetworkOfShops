@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.core.ProductName" %>
+<%@ page import="com.output.AboutTransaction" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,31 +11,30 @@
 
   <table border="1">
     <th>id</th> <th>Customers</th> <th>Shops</th> <th>Name P</th> <th>Count P</th> <th>Price P</th> <th>Delete</th>
-    <%for (Object object : (List<Object>)request.getAttribute("list")) {%>
-      <%Object[] objects = (Object[])object;%>
+    <%for (AboutTransaction about : (List<AboutTransaction>)request.getAttribute("aboutTransactions")) {%>
         <tr>
-          <td><%=objects[0]%></td>
-          <td><%=objects[1]%></td>
-          <td><%=objects[2]%></td>
-          <td><%=objects[5]%></td>
-          <td><%=objects[6]%></td>
-          <td><%=objects[7]%></td>
+          <td><%=about.getId()%></td>
+          <td><%=about.getNameCustomer()%></td>
+          <td><%=about.getNameProduct()%></td>
+          <td><%=about.getNameProduct()%></td>
+          <td><%=about.getCount()%></td>
+          <td><%=about.getPrice()%></td>
           <%--<td><a href="?carId=<%=car.getId()%>"><img src="images/icon-delete.gif" alt="del"></a> </td>--%>
           <%--<td><a href="?prod_id=<%=objects[3]%>">X</a></td>--%>
           <%--<td><form action="/edit/" method="post">
             <button type="submit" value="<%=objects[3]%>" name="prod_id">X</button>
           </form></td>--%>
-          <td><form method="post" action="/edit/deleteProduct/<%=objects[3]%>">
+          <form method="post" action="<%=about.getProdId()%>">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="button" value="X">
-          </form></td>
+            <td><input type="image" src="/resources/images/icon-delete.gif" alt="del"></td>
+          </form>
         </tr>
     <%}%>
   </table>
 
   <p>Add transaction</p>
 
-  <form method="post" action="${pageContext.request.contextPath}/edit/addTransaction/"><%--method="post" action="edit/addTransaction/"--%>
+ <%-- <form method="post" action="edit/addTransaction/">&lt;%&ndash;method="post" action="edit/addTransaction/"&ndash;%&gt;
     <table>
       <th>Customer</th> <th>Shop</th> <th>Product</th> <th>Count</th> <th>Price $</th> <th></th>
       <tr>
@@ -55,12 +55,12 @@
       <%}%>
     </table>
 
-    <%--<input type="hidden" name="_method" value="PUT">--%>
+    &lt;%&ndash;<input type="hidden" name="_method" value="PUT">&ndash;%&gt;
     <input type="submit" value="ADD">
 
-  </form>
+  </form>--%>
 
-  <tr></tr>
+  <%--<tr></tr>--%>
 
 
   <%--<form action="MyServlet" method="post">

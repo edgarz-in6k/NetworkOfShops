@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class AboutPurchasesCustomer implements Iterable<String>{
+public class AboutPurchasesCustomer implements Iterable<String> {
 
     private ArrayList<String> info = new ArrayList<>();
 

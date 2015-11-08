@@ -126,3 +126,5 @@ public class CustomerDAO extends DAO<TransactionByCustomer> {
         return query.list();
     }
 }
+
+//"SELECT TT.nameCustomer, TT.nameShop, TT.ct, sum(PP.count*PP.price) FROM (SELECT * FROM (SELECT nameCustomer, nameShop, count(nameShop) ct FROM Main GROUP BY nameCustomer, nameShop ORDER BY ct DESC) T GROUP BY nameCustomer) TT, (SELECT M.nameCustomer, M.nameShop, P.count, P.price FROM Main M, Product P WHERE M.main_id = P.fk_main_id ORDER BY M.nameCustomer) PP WHERE TT.nameCustomer = PP.nameCustomer and TT.nameShop = PP.nameShop GROUP BY TT.nameCustomer;";

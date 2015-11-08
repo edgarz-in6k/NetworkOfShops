@@ -14,6 +14,7 @@ public abstract class DAO<T> {
     public SessionFactory sessionFactory;
 
     public abstract void addTransaction(T t) throws SQLException;
+
     public abstract List getOperation(int prod_id);
     public abstract List getTransaction(int main_id) throws SQLException;
     public abstract List getAllTransaction() throws SQLException;

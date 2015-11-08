@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/favorite")
 public class CustomerFavoriteShop {
 
     @Autowired
@@ -19,6 +18,7 @@ public class CustomerFavoriteShop {
 
     @RequestMapping("/customerFavoriteShop")
 	public String customerFavoriteShop(ModelMap model) {
+
 
         List<AboutPurchasesCustomer> aboutPurchasesCustomers = null;
         try {
