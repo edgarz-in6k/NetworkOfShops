@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean name="customer1" class="com.core.Customer">
+              <constructor-arg value="Customer 1"/>
+       </bean>
+
+       <bean name="customer2" class="com.core.Customer">
+              <constructor-arg value="Customer 2"/>
+       </bean>
+
+       <bean name="shop1" class="com.core.Shop">
+              <constructor-arg value="Shop 1"/>
+              <property name="productSets" ref="productsShop1"/>
+       </bean>
+
+       <bean name="shop2" class="com.core.Shop">
+              <constructor-arg value="Shop 2"/>
+              <property name="productSets" ref="productsShop2"/>
+       </bean>
+
+       <bean name="shop3" class="com.core.Shop">
+              <constructor-arg value="Shop 3"/>
+              <property name="productSets" ref="productsShop3"/>
+       </bean>
+
+       <bean name="productsShop1" class="java.util.HashMap">
+              <constructor-arg>
+                     <map key-type="com.core.ProductName" value-type="com.core.ProductInfo">
+                            <entry key="CHEESE">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="4"/>
+                                          <constructor-arg value="5.6"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="FISH">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="12"/>
+                                          <constructor-arg value="2.8"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="MEAT">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="5"/>
+                                          <constructor-arg value="12.3"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="POTATO">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="7"/>
+                                          <constructor-arg value="14.3"/>
+                                   </bean>
+                            </entry>
+                     </map>
+              </constructor-arg>
+       </bean>
+
+       <bean name="productsShop2" class="java.util.HashMap">
+              <constructor-arg>
+                     <map key-type="com.core.ProductName" value-type="com.core.ProductInfo">
+                            <entry key="CHEESE">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="11"/>
+                                          <constructor-arg value="4.7"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="FISH">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="8"/>
+                                          <constructor-arg value="4.2"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="MEAT">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="14"/>
+                                          <constructor-arg value="9.9"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="POTATO">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="8"/>
+                                          <constructor-arg value="15.4"/>
+                                   </bean>
+                            </entry>
+                     </map>
+              </constructor-arg>
+       </bean>
+
+       <bean name="productsShop3" class="java.util.HashMap">
+              <constructor-arg>
+                     <map key-type="com.core.ProductName" value-type="com.core.ProductInfo">
+
+                            <entry key="MEAT">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="5"/>
+                                          <constructor-arg value="12.3"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="POTATO">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="22"/>
+                                          <constructor-arg value="2.5"/>
+                                   </bean>
+                            </entry>
+                     </map>
+              </constructor-arg>
+       </bean>
+
+       <bean name="productsCustomer1" class="java.util.HashMap">
+              <constructor-arg>
+                     <map key-type="com.core.ProductName" value-type="com.core.ProductInfo">
+                            <entry key="CHEESE">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="4"/>
+                                          <constructor-arg value="5.6"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="FISH">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="12"/>
+                                          <constructor-arg value="2.8"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="MEAT">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="5"/>
+                                          <constructor-arg value="12.3"/>
+                                   </bean>
+                            </entry>
+                     </map>
+              </constructor-arg>
+       </bean>
+
+       <bean name="productsCustomer2" class="java.util.HashMap">
+              <constructor-arg>
+                     <map key-type="com.core.ProductName" value-type="com.core.ProductInfo">
+                            <entry key="FISH">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="8"/>
+                                          <constructor-arg value="4.2"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="MEAT">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="14"/>
+                                          <constructor-arg value="9.9"/>
+                                   </bean>
+                            </entry>
+
+                            <entry key="POTATO">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="8"/>
+                                          <constructor-arg value="15.4"/>
+                                   </bean>
+                            </entry>
+                     </map>
+              </constructor-arg>
+       </bean>
+
+       <bean name="products2Customer1" class="java.util.HashMap">
+              <constructor-arg>
+                     <map key-type="com.core.ProductName" value-type="com.core.ProductInfo">
+                            <entry key="POTATO">
+                                   <bean class="com.core.ProductInfo">
+                                          <constructor-arg value="12"/>
+                                          <constructor-arg value="4.5"/>
+                                   </bean>
+                            </entry>
+                     </map>
+              </constructor-arg>
+       </bean>
+
+       <bean name="dealCustomerWithShop1" class="com.deal.DealCustomerWithShop">
+              <constructor-arg ref="customer1"/>
+              <constructor-arg ref="shop1"/>
+       </bean>
+
+       <bean name="dealCustomerWithShop2" class="com.deal.DealCustomerWithShop">
+              <constructor-arg ref="customer2"/>
+              <constructor-arg ref="shop2"/>
+       </bean>
+
+       <bean name="dealCustomerWithShop3" class="com.deal.DealCustomerWithShop">
+              <constructor-arg ref="customer1"/>
+              <constructor-arg ref="shop3"/>
+       </bean>
+
+       <bean name="transaction1" class="com.core.TransactionByCustomer"
+             factory-bean="dealCustomerWithShop1"
+             factory-method="deal">
+              <constructor-arg ref="productsCustomer1"/>
+       </bean>
+
+       <bean name="transaction2" class="com.core.TransactionByCustomer"
+             factory-bean="dealCustomerWithShop2"
+             factory-method="deal">
+              <constructor-arg ref="productsCustomer2"/>
+       </bean>
+
+       <bean name="transaction3" class="com.core.TransactionByCustomer"
+             factory-bean="dealCustomerWithShop3"
+             factory-method="deal">
+              <constructor-arg ref="products2Customer1"/>
+       </bean>
+
+</beans>
