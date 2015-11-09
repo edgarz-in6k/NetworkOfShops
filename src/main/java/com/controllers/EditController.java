@@ -2,6 +2,7 @@ package com.controllers;
 
 import com.core.*;
 import com.db.CustomerDAO;
+import com.output.AboutProducts;
 import com.output.AboutTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +25,10 @@ public class EditController {
 
     @Autowired
     private CustomerDAO customerDAO;
+
+    private static ArrayList<AboutProducts> products = new ArrayList<>();
+    private String nameCustomer;
+    private String nameShop;
 
     @RequestMapping("/show")
     public String edit(Model model){
@@ -74,13 +80,64 @@ public class EditController {
         return "redirect:/edit/show";
     }
 
-    /*@RequestMapping(value = "/deleteTransactionProduct/{main_id}", method = RequestMethod.POST)
-    public String deleteTransactionProduct(@PathVariable("main_id") int main_id){
+    @RequestMapping(value = "deleteTransactionProduct/", method = RequestMethod.DELETE)
+    public String deleteTransactionProduct(@RequestParam("main_id") int main_id){
+        try {
+            customerDAO.deleteTransaction(main_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/edit/show";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addTransaction(@RequestParam("nameCustomer") String nameCustomer,
+                                 @RequestParam("nameShop") String nameShop,
+                                 Model model){
+        model.addAttribute("nameCustomer", nameCustomer);
+        model.addAttribute("nameShop", nameShop);
+        this.nameCustomer = nameCustomer;
+        this.nameShop = nameShop;
+        model.addAttribute("price", "price");
+        model.addAttribute("products", products);
+        return "addTransaction";
+    }
+
+    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+    public String addProductToTransaction(
+                                 @RequestParam("nameProduct") String nameProduct,
+                                 @RequestParam("count") String count,
+                                 @RequestParam("price") String price,
+                                 Model model){
+        products.add(new AboutProducts(nameProduct, count, price));
+        model.addAttribute("nameCustomer", nameCustomer);
+        model.addAttribute("nameShop", nameShop);
+        model.addAttribute("products", products);
+        return "addTransaction";
+    }
+
+    @RequestMapping(value = "/endAddProduct", method = RequestMethod.POST)
+    public String endAddProductToTransaction(){
+        TransactionByCustomer transaction = new TransactionByCustomer(new Customer(nameCustomer), new Shop(nameShop));
+        for (AboutProducts about : products){
+            transaction.getProductSets().put(
+                    ProductName.createProductName(about.getNameProduct()),
+                    new ProductInfo(Integer.parseInt(about.getCount()), Double.parseDouble(about.getPrice())));
+        }
+        try {
+            customerDAO.addTransaction(transaction);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        products = new ArrayList<>();
+        nameCustomer = "";
+        nameShop = "";
 
         return "redirect:/edit/show";
     }
 
-    @RequestMapping(value = "/addTransaction/", method = RequestMethod.PUT)
+    /*@RequestMapping(value = "/addTransaction/", method = RequestMethod.PUT)
     public String addTransaction(Model model, HttpServletRequest request){
         String paramNameCustomersInput = request.getParameter("nameCustomersInput");
         Map<ProductName, ProductInfo> productSets = new HashMap<>();
