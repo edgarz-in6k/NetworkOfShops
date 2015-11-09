@@ -15,11 +15,12 @@
 </head>
 <body>
 
-	<h3>${welcome}</h3>
-	<ul>
-		<li><a href="customerFavoriteShop">Customers favorites of Shops</a></li>
-		<li><a href="edit/show">Edit database</a></li>
-	</ul>
+	<div class="jumbotron">
+		<h1>Information of shops and shopper</h1>
+		<p>bla-bla-bla</p>
+		<p><a class="btn btn-primary btn-lg" role="button" href="customerFavoriteShop">Customers favorites of Shops</a></p>
+		<p><a class="btn btn-primary btn-lg" role="button" href="edit/show">Edit database</a></p>
+	</div>
 
 </body>
 </html>

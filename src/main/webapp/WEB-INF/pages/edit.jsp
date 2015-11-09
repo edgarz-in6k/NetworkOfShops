@@ -41,6 +41,7 @@
         <td class="active"><%=about.getPrice()%></td>
         <form method="post" action="<%=about.getProdId()%>">
             <input type="hidden" name="_method" value="DELETE">
+            <%--glyphicon glyphicon-remove--%>
             <td><input type="image" src="/resources/images/icon-delete.gif" alt="del"></td>
         </form>
     </tr>

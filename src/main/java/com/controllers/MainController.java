@@ -9,7 +9,7 @@ public class MainController {
 
 	@RequestMapping("/")
 	public String printWelcome(ModelMap model) {
-		model.addAttribute("welcome", "<h1>Information of shops and shoppers</h1>");
+		model.addAttribute("welcome", "Information of shops and shoppers");
 		return "../../index";
 	}
 }
