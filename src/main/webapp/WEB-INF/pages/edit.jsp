@@ -27,9 +27,9 @@
     <th class="btn-primary">id</th>
     <th class="btn-primary">Customers</th>
     <th class="btn-primary">Shops</th>
-    <th class="btn-primary">Name P</th>
-    <th class="btn-primary">Count P</th>
-    <th class="btn-primary">Price P</th>
+    <th class="btn-primary">Name Product</th>
+    <th class="btn-primary">Count</th>
+    <th class="btn-primary">Price</th>
     <th class="btn-primary">Delete</th>
     <%for (AboutTransaction about : (List<AboutTransaction>)request.getAttribute("aboutTransactions")) {%>
     <tr class="bg-info">

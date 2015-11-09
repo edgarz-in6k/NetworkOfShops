@@ -11,6 +11,7 @@ public class AboutTransaction implements Iterable<String> {
                             String nameCustomer,
                             String nameShop,
                             String prod_id,
+                            String fk_main_id,
                             String nameProduct,
                             String count,
                             String price) {
@@ -18,6 +19,7 @@ public class AboutTransaction implements Iterable<String> {
         info.add(nameCustomer);
         info.add(nameShop);
         info.add(prod_id);
+        info.add(fk_main_id);
         info.add(nameProduct);
         info.add(count);
         info.add(price);
@@ -34,7 +36,8 @@ public class AboutTransaction implements Iterable<String> {
                     objects[3].toString(),
                     objects[4].toString(),
                     objects[5].toString(),
-                    objects[6].toString()));
+                    objects[6].toString(),
+                    objects[7].toString()));
         }
         return aboutTransaction;
     }
@@ -55,16 +58,20 @@ public class AboutTransaction implements Iterable<String> {
         return info.get(3);
     }
 
-    public String getNameProduct() {
+    public String getFkMainId() {
         return info.get(4);
     }
 
-    public String getCount() {
+    public String getNameProduct() {
         return info.get(5);
     }
 
-    public String getPrice() {
+    public String getCount() {
         return info.get(6);
+    }
+
+    public String getPrice() {
+        return info.get(7);
     }
 
     @Override

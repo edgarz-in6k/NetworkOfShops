@@ -14,6 +14,10 @@ public class CustomerDAO extends DAO<TransactionByCustomer> {
     @Override
     public void addTransaction(TransactionByCustomer transaction) throws SQLException {
         MainEntity mainEntity = new MainEntity(transaction.getCustomer().getName(), transaction.getShop().getName());
+        for (Map.Entry<ProductName, ProductInfo> entry : transaction.getProductSets().entrySet()){
+            ProductEntity productEntity = new ProductEntity(entry.getKey().name(), entry.getValue().getCount(), entry.getValue().getPrice(), mainEntity);
+            mainEntity.getProductSet().add(productEntity);
+        }
         sessionFactory.getCurrentSession().save(mainEntity);
 
         for (Map.Entry<ProductName, ProductInfo> entry :

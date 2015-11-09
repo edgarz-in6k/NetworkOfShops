@@ -33,7 +33,8 @@ public class TransactionByCustomer extends Transaction<Customer> {
                     objects[3].toString(),
                     objects[4].toString(),
                     objects[5].toString(),
-                    objects[6].toString()));
+                    objects[6].toString(),
+                    objects[7].toString()));
         }
 
         while (!aboutTransactions.isEmpty()){
