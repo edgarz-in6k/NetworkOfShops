@@ -2,50 +2,50 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
+<link rel='stylesheet' href='../../resources/bootstrap-3.3.5-dist/css/bootstrap.css' type='text/css' media='all'>
+<link rel='stylesheet' href='../../resources/bootstrap-3.3.5-dist/css/bootstrap.css.map' type='text/css' media='all'>
+<link rel='stylesheet' href='../../resources/bootstrap-3.3.5-dist/css/bootstrap.min.css' type='text/css' media='all'>
+<link rel='stylesheet' href='../../resources/bootstrap-3.3.5-dist/css/bootstrap-theme.css' type='text/css' media='all'>
+<link rel='stylesheet' href='../../resources/bootstrap-3.3.5-dist/css/bootstrap-theme.css.map' type='text/css' media='all'>
+<link rel='stylesheet' href='../../resources/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css' type='text/css' media='all'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <head>
     <title></title>
 </head>
 <body>
-  <p>Add Products for</p>
-  <p><%=request.getAttribute("nameCustomer")%> and <%=request.getAttribute("nameShop")%></p>
-  <%--<p><%=request.getAttribute("price")%></p>--%>
+
+  <div class="center-block"><h3 class="bg-info">Adding products</h3></div>
+  <div class="center-block"><h3 class="bg-info"><%=request.getAttribute("nameCustomer")%> and <%=request.getAttribute("nameShop")%></h3></div>
 
   <form method="POST" action="/edit/addProduct"> <%--id="add"--%>
-    <table border="1">
-      <th>Name Product</th> <th>Count</th> <th>Price</th>
+    <table class="table">
+      <th class="btn-primary">Name Product</th>
+      <th class="btn-primary">Count</th>
+      <th class="btn-primary">Price</th>
       <%for (AboutProducts about : (List<AboutProducts>)request.getAttribute("products")){%>
-      <tr>
-        <td><%=about.getNameProduct()%></td>
-        <td><%=about.getCount()%></td>
-        <td><%=about.getPrice()%></td>
+      <tr class="bg-info">
+        <td class="active"><%=about.getNameProduct()%></td>
+        <td class="active"><%=about.getCount()%></td>
+        <td class="active"><%=about.getPrice()%></td>
       </tr>
       <%}%>
-      <tr>
-        <td><input type="text" name="nameProduct"></td>
-        <td><input type="text" name="count"></td>
-        <td><input type="text" name="price"></td>
+      <tr class="bg-info">
+        <td class="active"><input type="text" name="nameProduct"></td>
+        <td class="active"><input type="text" name="count"></td>
+        <td class="active"><input type="text" name="price"></td>
       </tr>
     </table>
     <input type="submit" value="add">
   </form>
 
   <form method="post" action="/edit/endAddProduct">
-    <input type="submit" value="end add">
+    <input type="submit" value="end add" class="btn btn-btn-primary">
   </form>
 
-
-  <%--<form action="MyServlet" method="post">
-    <button type="submit" value="value" name="add">ADD</button>
-  </form>--%>
-  <%--<form method="post" action="bestmanager">
-      <label for="start">Start date(yyyy-mm-dd)</label>
-      <input type="date" name="startDate" id="start">
-
-      <label for="end">End date(yyyy-mm-dd)</label>
-      <input type="date" name="endDate" id="end">
-
-      <input type="submit" name="show" value="Show">
-    </form>--%>
+  <a href="/">back to main page</a>
 
 </body>
 </html>
