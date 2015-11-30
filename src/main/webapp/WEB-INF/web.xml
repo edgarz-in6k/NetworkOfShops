@@ -26,7 +26,7 @@
 
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.form</url-pattern>
 	</servlet-mapping>
 
 	<filter>
@@ -38,4 +38,5 @@
 		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<servlet-name>mvc-dispatcher</servlet-name>
 	</filter-mapping>
+
 </web-app>

@@ -37,7 +37,7 @@ public class EditController {
         namesCustomers(model);
         namesShops(model);
 
-        return "edit";
+        return "edit.jsp";
     }
 
     private void showAddTransaction(Model model) {
@@ -100,7 +100,7 @@ public class EditController {
         this.nameShop = nameShop;
         model.addAttribute("price", "price");
         model.addAttribute("products", products);
-        return "addTransaction";
+        return "addTransaction.jsp";
     }
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
@@ -113,7 +113,7 @@ public class EditController {
         model.addAttribute("nameCustomer", nameCustomer);
         model.addAttribute("nameShop", nameShop);
         model.addAttribute("products", products);
-        return "addTransaction";
+        return "addTransaction.jsp";
     }
 
     @RequestMapping(value = "/endAddProduct", method = RequestMethod.POST)

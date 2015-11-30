@@ -28,6 +28,6 @@ public class CustomerFavoriteShop {
         }
 
         model.addAttribute("aboutPurchasesCustomers", aboutPurchasesCustomers);
-		return "showCustomerFavoriteShop";
+		return "showCustomerFavoriteShop.jsp";
     }
 }
