@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title></title>
+    <script src="../../resources/js/angular.min.js"></script>
+    <script src="../../resources/js/main.js"></script>
+</head>
+    <body ng-app="myApp">
+        <h1>INDEX.HTML</h1>
+
+        <div ng-controller="controller">
+            <p>{{1+1}}</p>
+            <p ng-repeat="i in arr track by $index">{{i}}</p>
+
+        </div>
+
+        <div class="container">
+            <p><a class="btn btn-primary btn-lg" role="button" href="customerFavoriteShop">Customers favorites of Shops</a></p>
+            <p><a class="btn btn-primary btn-lg" role="button" href="edit/show">Edit database</a></p>
+        </div>
+
+    </body>
+</html>
