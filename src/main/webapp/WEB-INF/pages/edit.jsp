@@ -50,7 +50,6 @@
                             <td class="active"><%=about.getPrice()%></td>
                             <form method="post" action="<%=about.getProdId()%>">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <%--glyphicon glyphicon-remove--%>
                                 <td><input type="image" src="/resources/images/icon-delete.gif" alt="del"></td>
                             </form>
                         </tr>
@@ -61,18 +60,18 @@
 
       <div class="row">
           <div class="col-md-4 col-ld-4">
-              <form name="deleteForm" ng-controller="controller" method="post" action="deleteTransactionProduct" class="form-inline">
+              <form name="deleteForm" ng-controller="controller" method="post" action="/edit/deleteTransactionProduct/" class="form-inline">
                   <div class="form-group">
                       <input type="hidden" name="_method" value="DELETE">
 
                       <label for="main_id" class="col-sm-12 control-label">Delete transaction</label>
-                      <input type="text" name="main_id" id="main_id" class="form-control" required="">
+                      <input type="number" name="main_id" id="main_id" class="form-control" min="1" required="">
 
                       <div ng-show="deleteForm.$submitted || deleteForm.main_id.$touched">
                           <div ng-show="deleteForm.main_id.$error.required" class="error">Tell us id transaction.</div>
                       </div>
 
-                      <input type="submit" name="delete" id="delete" value="Delete" class="btn btn-btn-primary">
+                      <input type="submit" name="delete" id="delete" value="Delete" class="btn btn-btn-primary" ng-disabled="addForm.$invalid">
                   </div>
               </form>
           </div>
@@ -83,7 +82,7 @@
 
               <p>Add transaction</p>
 
-              <form name="addForm" ng-controller="controller" method="get" action="add" class="form-inline" onsubmit="return validateForm()">
+              <form name="addForm" ng-controller="controller" method="get" action="add" class="form-inline" novalidate>
                   <div class="form-group">
                       <label for="nameCustomer">Name customer</label>
                       <input type="text" id="nameCustomer" name="nameCustomer" ng-model="deal.customer" class="form-control" required="">
@@ -99,8 +98,8 @@
                           <div ng-show="addForm.nameShop.$error.required" class="error">Tell us shop name.</div>
                       </div>
                   </div>
-
-                  <input type="submit" value="to Add" class="btn btn-primary">
+                  </br>
+                  <input type="submit" value="to Add" class="btn btn-primary" ng-disabled="addForm.$invalid">
 
               </form>
           </div>

@@ -26,11 +26,11 @@
       <th class="btn-primary">Count</th>
       <th class="btn-primary">Price</th>
       <%for (AboutProducts about : (List<AboutProducts>)request.getAttribute("products")){%>
-      <tr class="bg-info">
-        <td class="active"><%=about.getNameProduct()%></td>
-        <td class="active"><%=about.getCount()%></td>
-        <td class="active"><%=about.getPrice()%></td>
-      </tr>
+        <tr class="bg-info">
+          <td class="active"><%=about.getNameProduct()%></td>
+          <td class="active"><%=about.getCount()%></td>
+          <td class="active"><%=about.getPrice()%></td>
+        </tr>
       <%}%>
       <tr class="bg-info">
         <td class="active"><input type="text" name="nameProduct"></td>
