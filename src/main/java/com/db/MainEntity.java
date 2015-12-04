@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -38,6 +39,7 @@ public class MainEntity {
     public MainEntity(String nameCustomer, String nameShop) {
         this.nameCustomer = nameCustomer;
         this.nameShop = nameShop;
+        this.productSet = new HashSet<>();
     }
 
     public Integer getId() {
