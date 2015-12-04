@@ -1,9 +1,8 @@
-var myApp = angular.module('myApp', []);
+angular.module('myApp', [])
+    .controller('controller', function ($scope, $http) {
 
-myApp.controller('controller', function ($scope, $http) {
+        $http.get('/angular').then(function (response) {
+            $scope.arr = response.data;
+        });
 
-    $http.get('/angular').then(function (response) {
-        $scope.arr = response.data;
     });
-
-});

@@ -3,24 +3,31 @@ package com.db;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
 @Table(name = "Main")
 public class MainEntity {
 
+    @NotNull
+    @Min(1)
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "main_id")
     private Integer id;
 
+    @NotNull
     @Column(name = "nameCustomer")
     private String nameCustomer;
 
+    @NotNull
     @Column(name = "nameShop")
     private String nameShop;
 
+    @NotNull
     @OneToMany(mappedBy = "main")
     private Set<ProductEntity> productSet;
 

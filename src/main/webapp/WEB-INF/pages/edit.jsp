@@ -16,11 +16,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="../../resources/js/angular.min.js"></script>
+<script src="../../resources/js/edit.js"></script>
+
 <head>
     <title>Edit</title>
 </head>
-<body>
-
+<body ng-app="edit">
 <div class="center-block"><h3 class="bg-info">Editing database</h3></div>
 
 <table class="table">
@@ -59,16 +61,41 @@
 
   <p>Add transaction</p>
 
-  <form method="get" action="add" class="form-inline">
+    <%--<script>--%>
+        <%--function validateForm() {--%>
+            <%--var stringNameCustomer = document.forms["addForm"]["nameCustomer"].value;--%>
+            <%--var stringNameShop = document.forms["addForm"]["nameShop"].value;--%>
+            <%--if (stringNameCustomer == null || stringNameCustomer == "") {--%>
+                <%--alert("Name customer must be filled out");--%>
+                <%--return false;--%>
+            <%--}--%>
+            <%--if (stringNameShop == null || stringNameShop == "") {--%>
+                <%--alert("Name shop must be filled out");--%>
+                <%--return false;--%>
+            <%--}--%>
+        <%--}--%>
+    <%--</script>--%>
+
+  <form name="addForm" ng-controller="controller" method="get" action="add" class="form-inline" onsubmit="return validateForm()">
+
       <div class="form-group">
           <label for="nameCustomer">Name customer</label>
-          <input type="text" id="nameCustomer" name="nameCustomer" class="form-control">
+          <input type="text" id="nameCustomer" name="nameCustomer" ng-model="deal.customer" class="form-control" required="">
+          <div ng-show="addForm.$submitted || addForm.nameCustomer.$touched">
+              <div ng-show="addForm.nameCustomer.$error.required">Tell us customer name.</div>
+          </div>
       </div>
+      </br>
       <div class="form-group">
           <label for="nameShop">Name shop</label>
-        <input type="text" id="nameShop" name="nameShop" class="form-control">
+          <input type="text" id="nameShop" name="nameShop" ng-model="deal.shop" class="form-control" required="">
+          <div ng-show="addForm.$submitted || addForm.nameShop.$touched">
+              <div ng-show="addForm.nameShop.$error.required">Tell us shop name.</div>
+          </div>
       </div>
+      </br>
       <input type="submit" value="to Add" class="btn btn-primary">
+
   </form>
 
   <datalist id="nameCustomers">

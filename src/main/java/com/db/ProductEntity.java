@@ -3,25 +3,35 @@ package com.db;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Product")
 public class ProductEntity {
+
+    @NotNull
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name = "prod_id")
     private Integer prod_id;
 
+    @NotNull
     @Column(name = "name")
     private String name;
 
+    @NotNull
+    @Min(1)
     @Column(name = "count")
     private Integer count;
 
+    @NotNull
+    @Min(0)
     @Column(name = "price")
     private Double price;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "fk_main_id")
     private MainEntity main;
