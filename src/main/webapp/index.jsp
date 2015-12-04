@@ -16,14 +16,14 @@
 </head>
 <body ng-app="myApp">
 
-<nav class="navbar navbar-brand">
-    <div class="navbar-inverse">
-        <div class="container">
-            <p><a class="btn btn-primary btn-lg" role="button" href="customerFavoriteShop">Customers favorites of Shops</a></p>
-            <p><a class="btn btn-primary btn-lg" role="button" href="edit/show">Edit database</a></p>
+    <nav class="navbar navbar-brand">
+        <div class="navbar-inverse">
+            <div class="container">
+                <p><a class="btn btn-primary btn-lg" role="button" href="customerFavoriteShop">Customers favorites of Shops</a></p>
+                <p><a class="btn btn-primary btn-lg" role="button" href="edit/show">Edit database</a></p>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 <%--<div ng-app="myApp">--%>
     <%--<div ng-controller="controller">--%>
